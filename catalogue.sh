@@ -54,7 +54,7 @@ fi
 
 VALIDATE $? "creating roboshop user"
 
-mkdir /app
+mkdir -p /app
 
 VALIDATE $? "creating app directory"
 
