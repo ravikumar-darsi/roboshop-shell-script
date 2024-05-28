@@ -5,18 +5,17 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-
 MONGDB_HOST=172.31.23.198
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
 
-echo "Script started executing at $TIMESTAMP" &>> $LOGFILE
+echo "script stareted executing at $TIMESTAMP" &>> $LOGFILE
 
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo -e "ERROR:: $2 ... $R FAILED $N"
+        echo -e "$2 ... $R FAILED $N"
         exit 1
     else
         echo -e "$2 ... $G SUCCESS $N"
@@ -58,13 +57,13 @@ VALIDATE $? "creating app directory"
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip  &>> $LOGFILE
 
-VALIDATE $? "Downloading catalogue application" 
+VALIDATE $? "Downloading catalogue application"
 
-cd /app
+cd /app 
 
 unzip -o /tmp/catalogue.zip  &>> $LOGFILE
 
-VALIDATE $? "Unzipping catalogue application" 
+VALIDATE $? "unzipping catalogue"
 
 npm install  &>> $LOGFILE
 
